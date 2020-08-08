@@ -7,7 +7,9 @@ import os
 from getpass import getpass
 import urllib
 
-from shutil import copy
+import shutil
+
+import time
 
 def printh(t,dynamic=False):
   if(dynamic):
@@ -18,17 +20,20 @@ def printh(t,dynamic=False):
 def getapp():
   printh("User name: ")
   user = input('')
-  printh("Password: ")
+  printh("Password: ",True)
   password = getpass('')
   password = urllib.parse.quote(password) # your password is converted into url format
-  printh("Repo name: ")
+  printh("Repo name: ",True)
   repo_name = input('')
 
   cmd_string = 'git clone https://{0}:{1}@github.com/{0}/{2}.git'.format(user, password, repo_name)
-
-  os.system(cmd_string)
-  cmd_string, password = "", "" # removing the password from the variable
-  #os.chdir(repo_name)
-  copy(repo_name+"/main.py", os.getcwd())
-
+  try:
+    os.system(cmd_string)
+    cmd_string, password = "", "" # removing the password from the variable
+    #os.chdir(repo_name)
+    shutil.copy(repo_name+"/main.py", os.getcwd())
+    shutil.rmtree(repo_name, ignore_errors=True)
+    print("Repo confirmed", True)
+  except(e):
+    printh("Cannot access to repo. Please try again.",True)
 getapp()
