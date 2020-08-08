@@ -33,7 +33,7 @@ def getapp():
     #os.chdir(repo_name)
     shutil.copy(repo_name+"/main.py", os.getcwd())
     shutil.rmtree(repo_name, ignore_errors=True)
-    printh("Repo confirmed", True)
+    printh("Repo confirmed. Start building app...", True)
   except(e):
     printh("Cannot access to repo. Please try again.",True)
 getapp()
