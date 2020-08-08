@@ -28,3 +28,5 @@ def getapp():
   cmd_string, password = "", "" # removing the password from the variable
   os.system('cd '+repo_name)
   import main
+
+getapp()
