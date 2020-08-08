@@ -29,6 +29,6 @@ def getapp():
   os.system(cmd_string)
   cmd_string, password = "", "" # removing the password from the variable
   #os.chdir(repo_name)
-  copyfile(repo_name+"/main.py", os.getcwd())
+  copy(repo_name+"/main.py", os.getcwd())
 
 getapp()
