@@ -7,6 +7,8 @@ import os
 from getpass import getpass
 import urllib
 
+from shutil import copy
+
 def printh(t,dynamic=False):
   if(dynamic):
     time.sleep(1)
@@ -26,6 +28,7 @@ def getapp():
 
   os.system(cmd_string)
   cmd_string, password = "", "" # removing the password from the variable
-  os.chdir(repo_name)
+  #os.chdir(repo_name)
+  copyfile(repo_name+"/main.py", os.getcwd())
 
 getapp()
