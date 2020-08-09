@@ -1,3 +1,5 @@
+import temp
+
 import IPython
 from IPython.utils import io
 from IPython.display import display,HTML,clear_output
@@ -9,7 +11,7 @@ import urllib
 
 import shutil
 
-import time
+import repo_name
 
 from google.colab import files
 import ipywidgets as widgets
@@ -27,7 +29,7 @@ def getapp():
   password = getpass('')
   password = urllib.parse.quote(password) # your password is converted into url format
   repo_name = ""
-  if rp==None:
+  if repo_name.name==None:
     printh("Repo name: ",True)
     repo_name = input('')
   else:
