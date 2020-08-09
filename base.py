@@ -26,9 +26,12 @@ def getapp():
   printh("Password: ",True)
   password = getpass('')
   password = urllib.parse.quote(password) # your password is converted into url format
-  printh("Repo name: ",True)
-  if repo_name==None:
+  repo_name = ""
+  if rp==None:
+    printh("Repo name: ",True)
     repo_name = input('')
+  else:
+    repo_name = rp
 
   cmd_string = 'git clone https://{0}:{1}@github.com/{0}/{2}.git'.format(user, password, repo_name)
   try:
