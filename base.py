@@ -1,4 +1,4 @@
-import temp
+import repo_name
 
 import IPython
 from IPython.utils import io
