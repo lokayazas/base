@@ -1,4 +1,4 @@
-import repo_name
+import rpn
 
 import IPython
 from IPython.utils import io
@@ -29,11 +29,11 @@ def getapp():
   password = getpass('')
   password = urllib.parse.quote(password) # your password is converted into url format
   repo_name = ""
-  if repo_name.name==None:
+  if rpn.name==None:
     printh("Repo name: ",True)
     repo_name = input('')
   else:
-    repo_name = repo_name.name
+    repo_name = rpn.name
 
   cmd_string = 'git clone https://{0}:{1}@github.com/{0}/{2}.git'.format(user, password, repo_name)
   try:
