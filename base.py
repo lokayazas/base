@@ -11,8 +11,6 @@ import urllib
 
 import shutil
 
-import repo_name
-
 from google.colab import files
 import ipywidgets as widgets
 
