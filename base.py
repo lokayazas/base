@@ -33,7 +33,7 @@ def getapp():
     printh("Repo name: ",True)
     repo_name = input('')
   else:
-    repo_name = rp
+    repo_name = repo_name.name
 
   cmd_string = 'git clone https://{0}:{1}@github.com/{0}/{2}.git'.format(user, password, repo_name)
   try:
