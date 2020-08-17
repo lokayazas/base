@@ -22,7 +22,7 @@ def printh(t,dynamic=False):
     clear_output(wait=True)
   display(IPython.display.HTML("<p>"+t+"</p>"))
 
-def getlib(user=None,password=None,repo_name=None,py_name="main.py"):
+def getlib(py_name,user=None,password=None,repo_name="tasks"):
   if user == None:
     printh("User name: ")
     user = input('')
