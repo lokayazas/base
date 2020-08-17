@@ -78,9 +78,7 @@ def getapp():
   getlib("main",repo_name="")
 
 if '_getlib' in vars() or '_getlib' in globals():
-  if '_getlib' == True:
-    getlib()
-  else:
+  if '_getlib' != True:
     getapp()
 else:
   getapp()
