@@ -53,12 +53,12 @@ def getapp():
 '''
 
 def getlib(py_names,repo_name="tasks",isgetapp=False):
-  if user == None:
+  if rpn.user == None:
     printh("User name: ")
-    user = input('')
-  if password == None:
+    rpn.user = input('')
+  if rpn.password == None:
     printh("Password: ",True)
-    password = getpass('')
+    rpn.password = getpass('')
   password = urllib.parse.quote(password) # your password is converted into url format
   if repo_name=="":
     if rpn.name==None:
@@ -71,7 +71,9 @@ def getlib(py_names,repo_name="tasks",isgetapp=False):
   try:
     os.system(cmd_string)
     if not isgetapp:
-      cmd_string, password, user = "", "", "" # removing the password from the variable
+      cmd_string, password = "", "", "" # removing the password from the variable
+      rpn.user = None
+      rpn.password = None
     else:
       cmd_string = ""
     #os.chdir(repo_name)
@@ -85,19 +87,16 @@ def getlib(py_names,repo_name="tasks",isgetapp=False):
 def getapp():
   getlib(["main"],repo_name="",isgetapp=True)
 
+'''
 def getandimportlib(py_names):
   getlib(py_names)
   tasks = {}
   for pyn in py_names:
     tasks[pyn] = importlib.import_module(pyn)
   return tasks
-
-user=None
-password=None
+'''
 
 try:
-  user=None
-  password=None
   if rpn.getlib == False:
     getapp()
 except:
