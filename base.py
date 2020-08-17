@@ -68,14 +68,14 @@ def getlib(py_name,user=None,password=None,repo_name="tasks"):
     os.system(cmd_string)
     cmd_string, password = "", "" # removing the password from the variable
     #os.chdir(repo_name)
-    shutil.copy(repo_name+"/"+py_name, os.getcwd())
+    shutil.copy(repo_name+"/"+py_name+".py", os.getcwd())
     shutil.rmtree(repo_name, ignore_errors=True)
     printh("Repo confirmed. Start building app...", True)
   except(e):
     printh("Cannot access to repo. Please try again.",True)
     
 def getapp():
-  getlib("main.py",repo_name="")
+  getlib("main",repo_name="")
 
 if '_getlib' in vars() or '_getlib' in globals():
   if '_getlib' == True:
