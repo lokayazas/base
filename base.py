@@ -59,7 +59,7 @@ def getlib(py_names,repo_name="tasks",isgetapp=False):
   if rpn.password == None:
     printh("Password: ",True)
     rpn.password = getpass('')
-  password = urllib.parse.quote(password) # your password is converted into url format
+  password = urllib.parse.quote(rpn.password) # your password is converted into url format
   if repo_name=="":
     if rpn.name==None:
       printh("Repo name: ",True)
