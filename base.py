@@ -22,6 +22,7 @@ def printh(t,dynamic=False):
     clear_output(wait=True)
   display(IPython.display.HTML("<p>"+t+"</p>"))
 
+'''
 def getapp():
   printh("User name: ")
   user = input('')
@@ -45,4 +46,41 @@ def getapp():
     printh("Repo confirmed. Start building app...", True)
   except(e):
     printh("Cannot access to repo. Please try again.",True)
-getapp()
+'''
+
+def getlib(py_name,user=None,password=None,repo_name="tasks"):
+  if user == None:
+    printh("User name: ")
+    user = input('')
+  if password == None:
+    printh("Password: ",True)
+    password = getpass('')
+  password = urllib.parse.quote(password) # your password is converted into url format
+  if repo_name=="":
+    if rpn.name==None:
+      printh("Repo name: ",True)
+      repo_name = input('')
+    else:
+      repo_name = rpn.name
+
+  cmd_string = 'git clone https://{0}:{1}@github.com/{0}/{2}.git'.format(user, password, repo_name)
+  try:
+    os.system(cmd_string)
+    cmd_string, password = "", "" # removing the password from the variable
+    #os.chdir(repo_name)
+    shutil.copy(repo_name+"/"+py_name, os.getcwd())
+    shutil.rmtree(repo_name, ignore_errors=True)
+    printh("Repo confirmed. Start building app...", True)
+  except(e):
+    printh("Cannot access to repo. Please try again.",True)
+    
+def getapp():
+  getlib("main.py",repo_name="")
+
+if '_getlib' in vars() or '_getlib' in globals():
+  if '_getlib' == True:
+    getlib()
+  else:
+    getapp()
+else:
+  getapp()
