@@ -77,9 +77,9 @@ def getlib(py_name,user=None,password=None,repo_name="tasks"):
 def getapp():
   getlib("main",repo_name="")
 
-if '_getlib' in vars() or '_getlib' in globals():
+if 'rpn.getlib' in vars() or 'rpn.getlib' in globals():
   print("Here!")
-  if '_getlib' != True:
+  if 'rpn.getlib' != True:
     getapp()
 else:
   getapp()
