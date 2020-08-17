@@ -18,6 +18,9 @@ import importlib
 from google.colab import files
 import ipywidgets as widgets
 
+user=None
+password=None
+
 def printh(t,dynamic=False):
   if(dynamic):
     time.sleep(1)
@@ -50,7 +53,7 @@ def getapp():
     printh("Cannot access to repo. Please try again.",True)
 '''
 
-def getlib(py_names,user=None,password=None,repo_name="tasks"):
+def getlib(py_names,repo_name="tasks",isgetapp=False):
   if user == None:
     printh("User name: ")
     user = input('')
@@ -68,7 +71,10 @@ def getlib(py_names,user=None,password=None,repo_name="tasks"):
   cmd_string = 'git clone https://{0}:{1}@github.com/{0}/{2}.git'.format(user, password, repo_name)
   try:
     os.system(cmd_string)
-    cmd_string, password = "", "" # removing the password from the variable
+    if not isgetapp:
+      cmd_string, password, user = "", "", "" # removing the password from the variable
+    else:
+      cmd_string = ""
     #os.chdir(repo_name)
     for pyn in py_names:
       shutil.copy(repo_name+"/"+pyn+".py", os.getcwd())
@@ -78,7 +84,7 @@ def getlib(py_names,user=None,password=None,repo_name="tasks"):
     printh("Cannot access to repo. Please try again.",True)
     
 def getapp():
-  getlib(["main"],repo_name="")
+  getlib(["main"],repo_name="",isGetApp=True)
 
 def getandimportlib(py_names):
   getlib(py_names)
