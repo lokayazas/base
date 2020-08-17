@@ -67,7 +67,7 @@ def getlib(py_names,repo_name="tasks",isgetapp=False):
     else:
       repo_name = rpn.name
 
-  cmd_string = 'git clone https://{0}:{1}@github.com/{0}/{2}.git'.format(user, password, repo_name)
+  cmd_string = 'git clone https://{0}:{1}@github.com/{0}/{2}.git'.format(rpn.user, rpn.password, repo_name)
   try:
     os.system(cmd_string)
     if not isgetapp:
