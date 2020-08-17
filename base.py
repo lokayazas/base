@@ -82,9 +82,11 @@ def getapp():
 
 def getandimportlib(py_names):
   getlib(py_names)
+  tasks = {}
   for pyn in py_names:
-    importlib.import_module(pyn)
-  
+    tasks[pyn] = importlib.import_module(pyn)
+  return tasks
+
 try:
   if rpn.getlib == False:
     getapp()
