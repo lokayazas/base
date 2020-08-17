@@ -84,7 +84,7 @@ def getlib(py_names,repo_name="tasks",isgetapp=False):
     printh("Cannot access to repo. Please try again.",True)
     
 def getapp():
-  getlib(["main"],repo_name="",isGetApp=True)
+  getlib(["main"],repo_name="",isgetapp=True)
 
 def getandimportlib(py_names):
   getlib(py_names)
