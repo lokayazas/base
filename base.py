@@ -18,8 +18,7 @@ import importlib
 from google.colab import files
 import ipywidgets as widgets
 
-user=None
-password=None
+
 
 def printh(t,dynamic=False):
   if(dynamic):
@@ -93,7 +92,12 @@ def getandimportlib(py_names):
     tasks[pyn] = importlib.import_module(pyn)
   return tasks
 
+user=None
+password=None
+
 try:
+  user=None
+  password=None
   if rpn.getlib == False:
     getapp()
 except:
