@@ -81,7 +81,7 @@ def getlib(py_names,repo_name="tasks",isgetapp=False):
       shutil.copy(repo_name+"/"+pyn+".py", os.getcwd())
     shutil.rmtree(repo_name, ignore_errors=True)
     printh("Repo confirmed. Start building app...", True)
-  except(e):
+  except Exceptions as e:
     printh("Cannot access to repo. Please try again.",True)
     
 def getapp():
