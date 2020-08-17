@@ -71,7 +71,7 @@ def getlib(py_names,repo_name="tasks",isgetapp=False):
   try:
     os.system(cmd_string)
     if not isgetapp:
-      cmd_string, password = "", "", "" # removing the password from the variable
+      cmd_string, password = "", "" # removing the password from the variable
       rpn.user = None
       rpn.password = None
     else:
