@@ -13,6 +13,8 @@ import shutil
 
 import time
 
+import importlib
+
 from google.colab import files
 import ipywidgets as widgets
 
@@ -48,7 +50,7 @@ def getapp():
     printh("Cannot access to repo. Please try again.",True)
 '''
 
-def getlib(py_name,user=None,password=None,repo_name="tasks"):
+def getlib(py_names,user=None,password=None,repo_name="tasks"):
   if user == None:
     printh("User name: ")
     user = input('')
@@ -68,17 +70,25 @@ def getlib(py_name,user=None,password=None,repo_name="tasks"):
     os.system(cmd_string)
     cmd_string, password = "", "" # removing the password from the variable
     #os.chdir(repo_name)
-    shutil.copy(repo_name+"/"+py_name+".py", os.getcwd())
+    for pyn in py_names:
+      shutil.copy(repo_name+"/"+pyn+".py", os.getcwd())
     shutil.rmtree(repo_name, ignore_errors=True)
     printh("Repo confirmed. Start building app...", True)
   except(e):
     printh("Cannot access to repo. Please try again.",True)
     
 def getapp():
-  getlib("main",repo_name="")
+  getlib(["main"],repo_name="")
 
+def getandimportlib(py_names):
+  getlib(py_names)
+  for pyn in py_names:
+    importlib.import_module(pyn)
+  
 try:
   if rpn.getlib == False:
     getapp()
 except:
   getapp()
+
+  
